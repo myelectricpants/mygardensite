@@ -1,3 +1,327 @@
 @use "./base.scss";
 
 // put your custom CSS here!
+/* ============================================
+   Robin Rendle-inspired theme for Quartz
+   Place this file at: quartz/styles/custom.scss
+   ============================================ */
+
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Inter:wght@400;500&display=swap');
+
+/* --- Color overrides --- */
+:root {
+  --light: #faf7f2;         /* warm off-white background */
+  --lightgray: #ede9e2;     /* subtle borders */
+  --gray: #a09890;          /* muted metadata */
+  --darkgray: #4a4540;      /* body text */
+  --dark: #1c1917;          /* headings */
+  --secondary: #7c5c3e;     /* links — warm brown */
+  --tertiary: #a07850;      /* hover */
+  --highlight: rgba(124, 92, 62, 0.08);
+}
+
+/* Dark mode */
+:root[saved-theme="dark"] {
+  --light: #1c1917;
+  --lightgray: #2c2825;
+  --gray: #6b6460;
+  --darkgray: #ccc5bb;
+  --dark: #f5f0e8;
+  --secondary: #c49a6c;
+  --tertiary: #d4aa80;
+  --highlight: rgba(196, 154, 108, 0.1);
+}
+
+/* --- Typography --- */
+body {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--darkgray);
+  background-color: var(--light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--dark);
+  line-height: 1.25;
+}
+
+h1 { font-size: 1.6rem; margin-bottom: 0.4em; }
+h2 { font-size: 1.25rem; margin-top: 2em; }
+h3 { font-size: 1.05rem; margin-top: 1.5em; }
+
+/* Body text spacing */
+p {
+  margin-bottom: 1.4em;
+}
+
+/* --- Links --- */
+a {
+  color: var(--secondary);
+  text-decoration: underline;
+  text-decoration-color: var(--lightgray);
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+
+a:hover {
+  color: var(--tertiary);
+  text-decoration-color: var(--tertiary);
+}
+
+/* --- Layout: narrow centered column --- */
+.page-header,
+.center,
+article,
+.left-sidebar,
+.right-sidebar {
+  max-width: 680px;
+}
+
+/* Hide sidebars entirely for a cleaner look */
+.sidebar.left,
+.sidebar.right {
+  display: none !important;
+}
+
+/* Center the main content column */
+#quartz-body {
+  display: flex;
+  justify-content: center;
+}
+
+.page > #quartz-body > .center {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --- Header / site title --- */
+.page-header {
+  padding: 3rem 0 2rem 0;
+  border-bottom: none;
+}
+
+.page-header h1.page-title,
+.page-header .page-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--dark);
+}
+
+/* Site name as plain text link */
+.page-header a {
+  text-decoration: none;
+  color: var(--dark);
+}
+
+.page-header a:hover {
+  color: var(--secondary);
+}
+
+/* --- Navigation --- */
+nav {
+  margin-top: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 1.25rem;
+}
+
+nav a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: var(--gray);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--secondary);
+}
+
+/* --- Article content --- */
+article {
+  padding: 2rem 0 4rem 0;
+}
+
+/* Metadata line (date, tags) */
+.meta,
+.content-meta {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--gray);
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* --- Note list / index page --- */
+ul.section-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.section-ul li.section-li {
+  border-bottom: 1px solid var(--lightgray);
+  padding: 1rem 0;
+}
+
+ul.section-ul li.section-li:first-child {
+  border-top: 1px solid var(--lightgray);
+}
+
+.section-li .meta {
+  margin-bottom: 0.25rem;
+}
+
+.section-li a {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.section-li a:hover {
+  color: var(--secondary);
+}
+
+.section-li p {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin: 0.25rem 0 0 0;
+  line-height: 1.5;
+}
+
+/* --- Blockquotes --- */
+blockquote {
+  border-left: 2px solid var(--lightgray);
+  margin: 1.5em 0;
+  padding: 0.25em 0 0.25em 1.5em;
+  color: var(--gray);
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* --- Code blocks --- */
+pre {
+  background: var(--lightgray);
+  border-radius: 4px;
+  padding: 1.25em 1.5em;
+  font-size: 0.85rem;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+code {
+  font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+  font-size: 0.875em;
+  background: var(--lightgray);
+  padding: 0.15em 0.4em;
+  border-radius: 3px;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+}
+
+/* --- Horizontal rule --- */
+hr {
+  border: none;
+  border-top: 1px solid var(--lightgray);
+  margin: 2.5em 0;
+}
+
+/* --- Backlinks section --- */
+.backlinks {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--lightgray);
+}
+
+.backlinks h3 {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--gray);
+  margin-bottom: 1rem;
+}
+
+.backlinks ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.backlinks li {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+/* --- Graph view (hide or minimize) --- */
+.graph {
+  display: none;
+}
+
+/* --- Footer --- */
+footer {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--gray);
+  padding: 2rem 0;
+  border-top: 1px solid var(--lightgray);
+  text-align: left;
+}
+
+/* --- Search --- */
+#search-button {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.875rem;
+  color: var(--gray);
+  background: none;
+  border: 1px solid var(--lightgray);
+  border-radius: 4px;
+  padding: 0.3em 0.75em;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+#search-button:hover {
+  border-color: var(--gray);
+}
+
+/* --- Mobile --- */
+@media (max-width: 640px) {
+  body {
+    font-size: 1rem;
+  }
+
+  .page > #quartz-body > .center {
+    padding: 0 1.25rem;
+  }
+
+  .page-header {
+    padding: 2rem 0 1.5rem 0;
+  }
+
+  h1 { font-size: 1.4rem; }
+}
