@@ -20,14 +20,14 @@
 
 /* Dark mode */
 :root[saved-theme="dark"] {
-  --light: #1c1917;
-  --lightgray: #2c2825;
-  --gray: #6b6460;
-  --darkgray: #ccc5bb;
-  --dark: #f5f0e8;
-  --secondary: #c49a6c;
-  --tertiary: #d4aa80;
-  --highlight: rgba(196, 154, 108, 0.1);
+  --light: #f5ede0;         /* soft sepia background */
+  --lightgray: #e8d9c8;     /* borders — slightly warmer */
+  --gray: #a09080;          /* muted metadata */
+  --darkgray: #4a4540;      /* body text */
+  --dark: #1c1917;          /* headings */
+  --secondary: #7c5c3e;     /* links */
+  --tertiary: #a07850;      /* hover */
+  --highlight: rgba(124, 92, 62, 0.08);
 }
 
 /* --- Typography --- */
